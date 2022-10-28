@@ -7,7 +7,6 @@ const {
   getDevProfile,
   deleteDevProfile,
   patchDevProfile,
-  deleteDevProfile,
 } = require("../controllers/developers");
 
 router.route("/").get(getAllDevProfiles).post(createDevProfile);
@@ -16,3 +15,5 @@ router
   .get(getDevProfile)
   .patch(patchDevProfile)
   .delete(deleteDevProfile);
+
+module.exports = router;
