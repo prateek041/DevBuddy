@@ -1,15 +1,27 @@
 const express = require("express");
 const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
+const mongoose = require("mongoose");
+
+// database connection.
+const connectDB = require("./dataBase/connectdb");
 
 // routes
-const devProfileRoute = require("./routes/developers");
-
-app.get("/", (req, res) => {
-  res.send("This is homepage");
-});
+const devProfileRoute = require("./routes/developers"); // routes to /developers
 
 app.use("/api/v1/developers", devProfileRoute);
 
-const port = 3030;
+const port = process.env.PORT; // port on which backend it listening and serving.
 
-app.listen(port, () => console.log(`Listening to port ${port}...`));
+const startApp = async () => {
+  try {
+    await connectDB(process.env.MONGO_URI);
+    console.log("Connected to database");
+    app.listen(port, () => console.log(`Listening to port ${port}...`));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+startApp();
