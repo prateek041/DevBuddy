@@ -27,6 +27,7 @@ const createDevProfile = asyncWrapper(async (req, res) => {
 // READ
 // To get all developer profiles, depending on the query made by user.
 const getAllDevProfiles = asyncWrapper(async (req, res) => {
+  const { name, country, city, state, college } = req.query;
   const profiles = await DevProfileSchema.find({});
   res.status(201).json({ status: "success", profiles: profiles });
 });
