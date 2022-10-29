@@ -4,6 +4,9 @@ const dotenv = require("dotenv");
 dotenv.config();
 const mongoose = require("mongoose");
 
+// for json transfer.
+app.use(express.json());
+
 // database connection.
 const connectDB = require("./dataBase/connectdb");
 
