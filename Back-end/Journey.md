@@ -12,11 +12,19 @@
 - Added utility middlewares, async-wrapper and custom error handler.
 - Changed name of some files for convention purposes.
 
-  - **BackLogs**:
+  - **Backlogs**:
 
     - [ ] how to improve the new-user section. too much repeated code.
     - [ ] Better implementation of DevProfile schema, features like social handles and tech stack.
 
   - **Tasks for tomorrow**:
-    - Setup advance query for getAllDevProfiles.
-    - Compare between regex and atlas search index, find the best for you.
+    - [ ] Setup advance query for getAllDevProfiles.
+    - [ ] Compare between regex and atlas search index, find the best for you.
+
+### 30 Oct 2022:
+
+- Implemented regex for querying data based on the request parameters.
+- Tested initial setup, further intensive testing needed.
+
+  - **Backlogs**:
+    - [ ] intensive testing of getAllDevProfiles route.
