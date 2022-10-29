@@ -2,6 +2,7 @@ const express = require("express");
 const DevProfileSchema = require("../models/developer");
 const asyncWrapper = require("../middleware/asyncWrapper");
 
+// CREATE
 // for creating a new profile. When the user signs in.
 const createDevProfile = asyncWrapper(async (req, res) => {
   // creating the Devprofile
@@ -14,20 +15,26 @@ const createDevProfile = asyncWrapper(async (req, res) => {
   res.status(200).json({ status: "success" });
 });
 
+// READ
 // To get all developer profiles, depending on the query made by user.
-const getAllDevProfiles = (req, res) => {
-  res.status(200).send("List of all dev profiles");
-};
+const getAllDevProfiles = asyncWrapper(async (req, res) => {
+  const profiles = await DevProfileSchema.find({});
+  res.status(201).json({ status: "success", profiles: profiles });
+});
 
+// READ
 // To get specifically requested Dev profile.
 const getDevProfile = (req, res) => {
   res.status(200).send("Dev profile");
 };
 
+// UPDATE
 // To update dev profile.
 const patchDevProfile = (req, res) => {
   res.status(200).send("Profile updated");
 };
+
+// UPDATE
 // To delete profile.
 const deleteDevProfile = (req, res) => {
   res.status(200).send("profile deleted");
