@@ -19,3 +19,4 @@
 
   - **Tasks for tomorrow**:
     - Setup advance query for getAllDevProfiles.
+    - Compare between regex and atlas search index, find the best for you.

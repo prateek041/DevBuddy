@@ -27,8 +27,29 @@ const createDevProfile = asyncWrapper(async (req, res) => {
 // READ
 // To get all developer profiles, depending on the query made by user.
 const getAllDevProfiles = asyncWrapper(async (req, res) => {
-  const { name, country, city, state, college } = req.query;
-  const profiles = await DevProfileSchema.find({});
+  const { country, city, state, college, techStack } = req.query; // destructuring request params.
+
+  const queryObject = {};
+
+  if (college) {
+    // if college is requested.
+    queryObject.college = { $regex: college, $options: "i" };
+  }
+  if (country) {
+    queryObject.country = { $regex: country, $options: "i" };
+  }
+  if (city) {
+    queryObject.city = { $regex: city, $options: "i" };
+  }
+  if (state) {
+    queryObject.state = { $regex: state, $options: "i" };
+  }
+  if (techStack?.length > 0) {
+    queryObject.techStack = { $all: techStack };
+  }
+
+  console.log(queryObject);
+  const profiles = await DevProfileSchema.find(queryObject);
   res.status(201).json({ status: "success", profiles: profiles });
 });
 
