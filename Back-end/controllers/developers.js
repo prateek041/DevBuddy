@@ -7,8 +7,17 @@ const asyncWrapper = require("../middleware/asyncWrapper");
 const createDevProfile = asyncWrapper(async (req, res) => {
   // creating the Devprofile
   const newUser = new DevProfileSchema();
+  newUser.name = req.body.name;
   newUser.username = req.body.username;
-  newUser.about = req.body.about;
+  newUser.bio = req.body.bio;
+  newUser.email = req.body.email;
+  newUser.country = req.body.country;
+  newUser.city = req.body.city;
+  newUser.state = req.body.state;
+  newUser.isCollegeStudent = req.body.isCollegeStudent;
+  newUser.college = req.body.college;
+  newUser.techStack = req.body.techStack;
+  newUser.socials = req.body.socials;
 
   // creating entry in the Database.
   await newUser.save();

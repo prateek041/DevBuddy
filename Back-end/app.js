@@ -9,7 +9,7 @@ const errorHandler = require("./middleware/errorHandler");
 app.use(express.json());
 
 // database connection.
-const connectDB = require("./dataBase/connectdb");
+const connectDB = require("./data-base/connectdb");
 
 // routes
 const devProfileRoute = require("./routes/developers"); // routes to /developers
