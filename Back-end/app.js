@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 const mongoose = require("mongoose");
+const errorHandler = require("./middleware/errorHandler");
 
 // for json transfer.
 app.use(express.json());
@@ -14,6 +15,8 @@ const connectDB = require("./dataBase/connectdb");
 const devProfileRoute = require("./routes/developers"); // routes to /developers
 
 app.use("/api/v1/developers", devProfileRoute);
+
+app.use(errorHandler);
 
 const port = process.env.PORT; // port on which backend it listening and serving.
 
