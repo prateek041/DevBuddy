@@ -28,3 +28,7 @@
 
   - **Backlogs**:
     - [ ] intensive testing of getAllDevProfiles route.
+
+1 - search index and test them.
+2 - next models
+3 -

@@ -31,21 +31,12 @@ const getAllDevProfiles = asyncWrapper(async (req, res) => {
 
   const queryObject = {};
 
-  if (college) {
-    // if college is requested.
-    queryObject.college = { $regex: college, $options: "i" };
-  }
+  // Initially we are just handling country and tech stack.
   if (country) {
     queryObject.country = { $regex: country, $options: "i" };
   }
-  if (city) {
-    queryObject.city = { $regex: city, $options: "i" };
-  }
-  if (state) {
-    queryObject.state = { $regex: state, $options: "i" };
-  }
   if (techStack?.length > 0) {
-    queryObject.techStack = { $all: techStack };
+    queryObject.techStack = { $in: techStack };
   }
 
   console.log(queryObject);
